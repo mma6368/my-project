@@ -22,6 +22,8 @@ export const Checkout = () => {
   const [zip, setZip] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [cardNumber, setCardNumber] = useState("");
+  const [invoice, setInvoice] = useState(null);
+
 
   const handlePlaceOrder = () => {
     const invoiceData = {
