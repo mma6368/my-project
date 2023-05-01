@@ -12,28 +12,37 @@ export const Checkout = () => {
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
 
-  const [invoice, setInvoice] = useState(null); 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
 
   const handlePlaceOrder = () => {
     const invoiceData = {
       totalAmount: totalAmount,
       shippingInfo: {
-        firstName: document.getElementById("firstname").value,
-        lastName: document.getElementById("lastname").value,
-        phoneNumber: document.getElementById("phonenumber").value,
-        emailAddress: document.getElementById("email").value,
-        address: document.getElementById("address").value,
-        city: document.getElementById("city").value,
-        state: document.getElementById("state").value,
-        zipCode: document.getElementById("zip").value,
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        emailAddress: email,
+        address: address,
+        city: city,
+        state: state,
+        zipCode: zip,
       },
       billingInfo: {
-        paymentMethod: document.querySelector('input[name="card"]:checked').value,
-        cardNumber: document.getElementById("cardnumber").value,
+        paymentMethod: paymentMethod,
+        cardNumber: cardNumber,
       },
     };
 
-    setInvoice(invoiceData); 
+    setInvoice(invoiceData);
   };
 
   return (
