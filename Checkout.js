@@ -69,10 +69,30 @@ export const Checkout = () => {
                   <div><br></br></div>
                   <h4>Payment Method</h4>
                   <div>
-                    <input type="radio" value="text" name="card" /> Credit/Debit Card
-                    <input type="text" name="cardnumber" className="form-control" />
+                    <input
+                        type="radio"
+                        value="text"
+                        name="card"
+                        checked={paymentMethod === "credit/debit"}
+                        onChange={(e) => setPaymentMethod("credit/debit")}
+                    />{" "}
+                  Credit/Debit Card
+                    <input
+                        type="text"
+                        name="cardNumber"
+                        className="form-control"
+                        value={cardNumber}
+                        onChange={(e) => setCardNumber(e.target.value)}
+                    />
                     <br></br>
-                    <input type="radio" value="text" name="card" /> Pay with Paypal <br></br>
+                    <input
+                        type="radio"
+                        value="text"
+                        name="card"
+                        checked={paymentMethod === "paypal"}
+                        onChange={(e) => setPaymentMethod("paypal")}
+                     />{" "} 
+                   Pay with Paypal <br></br>
                     <input type="text" name="paypal" className="form-control" />
                   </div>
                   <div><br></br></div>
@@ -81,74 +101,133 @@ export const Checkout = () => {
                 <div className="card-body">
                   <div className="row">
                     <div className="col-md-6">
-                      <div className="form-group mb-3">
-                        <label>First Name</label>
-                        <input type="text" id="firstname" className="form-control" />
+                        <div className="form-group mb-3">
+                          <label>First Name</label>
+                          <input
+                            type="text"
+                            name="firstname"
+                            className="form-control"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group mb-3">
-                        <label>Last Name</label>
-                        <input type="text" id="lastname" className="form-control" />
+
+                      <div className="col-md-6">
+                        <div className="form-group mb-3">
+                          <label>Last Name</label>
+                          <input
+                            type="text"
+                            name="lastname"
+                            className="form-control"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                          />
+                        </div>
                       </div>
+
                       <div className="col-md-6">
                         <div className="form-group mb-3">
                           <label>Phone Number</label>
-                          <input type="text" id="phonenumber" className="form-control" />
+                          <input
+                            type="text"
+                            name="phonenumber"
+                            className="form-control"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                          />
                         </div>
                       </div>
+
                       <div className="col-md-6">
                         <div className="form-group mb-3">
                           <label>Email Address</label>
-                          <input type="text" id="email" className="form-control" />
+                          <input
+                            type="text"
+                            name="email"
+                            className="form-control"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
                         </div>
                       </div>
+
                       <div className="col-md-12">
                         <div className="form-group mb-3">
                           <label>Full Address</label>
-                          <input type="text" id="address" className="form-control" />
+                          <input
+                            type="text"
+                            name="address"
+                            className="form-control"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                          />
                         </div>
                       </div>
+
                       <div className="col-md-4">
                         <div className="form-group mb-3">
                           <label>City</label>
-                          <input type="text" id="city" className="form-control" />
+                          <input
+                            type="text"
+                            name="city"
+                            className="form-control"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                          />
                         </div>
                       </div>
+
                       <div className="col-md-4">
                         <div className="form-group mb-3">
                           <label>State</label>
-                          <input type="text" id="state" className="form-control" />
+                            <input
+                              type="text"
+                              name="state"
+                              className="form-control"
+                              value={state}
+                              onChange={(e) => setState(e.target.value)}
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-md-4">
-                        <div className="form-group mb-3">
-                          <label>Zip Code</label>
-                          <input type="text" id="zip" className="form-control" />
+
+                        <div className="col-md-4">
+                          <div className="form-group mb-3">
+                            <label>Zip Code</label>
+                            <input
+                              type="text"
+                              name="zip"
+                              className="form-control"
+                              value={zip}
+                              onChange={(e) => setZip(e.target.value)}
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-md-12">
-                        <div className="form-group">
-                          {totalAmount > 0 ? (
-                            <div className="checkout">
-                              <p> Subtotal: ${totalAmount} </p>
-                              <h4> Total (+tax): ${totalAmount * 0.06 + totalAmount} </h4>
-                            </div>
-                          ) : (
-                            <h1></h1>
-                          )}
+
+
+                        <div className="col-md-12">
+                          <div className="form-group">
+                            {cartTotal > 0 ? (
+                              <div className="checkout">
+                                <p>Subtotal: ${cartTotal}</p>
+                                <h4>Total (+tax): ${(cartTotal * 0.06) + cartTotal}</h4>
+                              </div>
+                            ) : (
+                              <h1></h1>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-md-12">
-                        <div className="form-group text-end">
-                          <button type="button" className="btn btn-primary" onClick={handlePlaceOrder}>
-                            Place Order
-                          </button>
+
+                        <div className="col-md-12">
+                          <div className="form-group text-end">
+                            <button type="button" className="btn btn-primary" onClick={handlePlaceOrder}>
+                              Place Order
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
