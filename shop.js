@@ -2,6 +2,7 @@ import React from "react";
 import { PRODUCTS } from "../../products";
 import { Product } from "./product";
 import ProductIMG from '../../assets/product.png';
+
 import './shop.css';
 
 
@@ -12,7 +13,7 @@ export const Shop = () => {
         <p><br></br></p>
       </div>
       <div className="shopTitle">
-        <h1></h1>
+        <h1>Top & Bottom wears</h1>
       </div>
 
       <div className="products">
